@@ -9,3 +9,12 @@ describe('when input is empty', function() {
     expect(parser('').Data).to.deep.equal([]);
   });
 });
+
+describe('when providing single line of input', function() {
+  it('we expect the header to be filled', function() {
+    expect(parser('wubba,lubba,dub,dub,').Header).to.deep.equal(['wubba', 'lubba', 'dub', 'dub']);
+  });
+  it('we expect the data to be an empty array', function() {
+    expect(parser('wubba,lubba,dub,dub,').Data).to.deep.equal([]);
+  });
+});
