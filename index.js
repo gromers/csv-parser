@@ -36,17 +36,19 @@ module.exports = {
 
 
     for(var i = 0; i < csv.length; i++) {
-      var currentCharacter = csv.charAt(i);
-      switch (currentCharacter) {
-        case ',':
+      var charCode = csv.charCodeAt(i);
+      switch (charCode) {
+        case 0:
+          continue;
+        case 44:
           handleColumnSeparator();
           break;
-        case '\n':
+        case 10:
           handleColumnSeparator();
           handleLineMarker();
           break;
         default:
-          columnContent += currentCharacter;
+          columnContent += String.fromCharCode(charCode);
       }
     }
 
